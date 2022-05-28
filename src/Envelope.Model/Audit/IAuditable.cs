@@ -1,10 +1,9 @@
 ﻿namespace Envelope.Model.Audit;
 
-public interface IAuditable<TIdentity>
-	where TIdentity : struct
+public interface IAuditable
 {
 	DateTime AuditCreatedUtc { get; set; }
-	TIdentity? IdAuditCreatedBy { get; set; }
+	Guid? IdAuditCreatedBy { get; set; }
 	DateTime? AuditModifiedUtc { get; set; }
-	TIdentity? IdAuditModifiedBy { get; set; }
+	Guid? IdAuditModifiedBy { get; set; }
 }

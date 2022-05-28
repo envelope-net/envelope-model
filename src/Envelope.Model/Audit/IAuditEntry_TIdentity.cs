@@ -1,9 +1,10 @@
 ﻿namespace Envelope.Model.Audit;
 
-public interface IAuditEntry
+public interface IAuditEntry<TIdentity>
+	where TIdentity : struct
 {
 	DateTime CreatedUtc { get; set; }
-	Guid? IdUser { get; set; }
+	TIdentity? IdUser { get; set; }
 	int IdAuditType { get; set; }
 	string TableName { get; set; }
 	string PrimaryKey { get; set; }
