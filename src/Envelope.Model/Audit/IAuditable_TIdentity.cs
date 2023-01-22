@@ -1,5 +1,8 @@
 ﻿namespace Envelope.Model.Audit;
 
+#if NET6_0_OR_GREATER
+[Envelope.Serializer.JsonPolymorphicConverter]
+#endif
 public interface IAuditable<TIdentity>
 	where TIdentity : struct
 {
