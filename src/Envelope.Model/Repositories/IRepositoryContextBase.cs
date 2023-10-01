@@ -6,44 +6,9 @@ namespace Envelope.Model.Repositories;
 
 public partial interface IRepositoryContextBase
 {
-	int Save(
-		[CallerMemberName] string memberName = "",
-		[CallerFilePath] string sourceFilePath = "",
-		[CallerLineNumber] int sourceLineNumber = 0);
+	string? ConnectionId { get; }
 
-	int Save(
-		ITraceInfo traceInfo,
-		[CallerMemberName] string memberName = "",
-		[CallerFilePath] string sourceFilePath = "",
-		[CallerLineNumber] int sourceLineNumber = 0);
-
-	int Save(
-		ITraceInfo? traceInfo,
-		SaveOptions? options,
-		[CallerMemberName] string memberName = "",
-		[CallerFilePath] string sourceFilePath = "",
-		[CallerLineNumber] int sourceLineNumber = 0);
-
-	int Save(
-		ITraceInfo? traceInfo,
-		bool acceptAllChangesOnSuccess,
-		[CallerMemberName] string memberName = "",
-		[CallerFilePath] string sourceFilePath = "",
-		[CallerLineNumber] int sourceLineNumber = 0);
-
-	int Save(
-		ITraceInfo? traceInfo,
-		bool acceptAllChangesOnSuccess,
-		SaveOptions? options,
-		[CallerMemberName] string memberName = "",
-		[CallerFilePath] string sourceFilePath = "",
-		[CallerLineNumber] int sourceLineNumber = 0);
-
-	Task<int> SaveAsync(
-		CancellationToken cancellationToken = default,
-		[CallerMemberName] string memberName = "",
-		[CallerFilePath] string sourceFilePath = "",
-		[CallerLineNumber] int sourceLineNumber = 0);
+	void SetConnectionId(string connectionId);
 
 	Task<int> SaveAsync(
 		ITraceInfo traceInfo,
@@ -53,7 +18,16 @@ public partial interface IRepositoryContextBase
 		[CallerLineNumber] int sourceLineNumber = 0);
 
 	Task<int> SaveAsync(
+		ITraceInfo traceInfo,
+		bool autoCommit,
+		CancellationToken cancellationToken = default,
+		[CallerMemberName] string memberName = "",
+		[CallerFilePath] string sourceFilePath = "",
+		[CallerLineNumber] int sourceLineNumber = 0);
+
+	Task<int> SaveAsync(
 		ITraceInfo? traceInfo,
+		bool autoCommit,
 		SaveOptions? options,
 		CancellationToken cancellationToken = default,
 		[CallerMemberName] string memberName = "",
@@ -62,6 +36,7 @@ public partial interface IRepositoryContextBase
 
 	Task<int> SaveAsync(
 		ITraceInfo? traceInfo,
+		bool autoCommit,
 		bool acceptAllChangesOnSuccess,
 		CancellationToken cancellationToken = default,
 		[CallerMemberName] string memberName = "",
@@ -70,6 +45,7 @@ public partial interface IRepositoryContextBase
 
 	Task<int> SaveAsync(
 		ITraceInfo? traceInfo,
+		bool autoCommit,
 		bool acceptAllChangesOnSuccess,
 		SaveOptions? options,
 		CancellationToken cancellationToken = default,

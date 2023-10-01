@@ -10,7 +10,7 @@ public interface IEntityRepositoryBase<T> : IEntityRepositoryBase
 
 	Task<IQueryable<T>> AsReadOnlyQueryableAsync(CancellationToken cancellationToken = default);
 
-	void Add(T entity);
+	Task AddAsync(T entity, CancellationToken cancellationToken = default);
 
-	void Remove(T entity);
+	Task RemoveAsync(T entity, CancellationToken cancellationToken = default);
 }
